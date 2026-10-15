@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HQM Härtetechnik · Unternehmensvorstellung</title>
+<!--
+  HQM Härtetechnik · Infomappe als Single-Source-HTML
+  Versandfassung (Entwurf v13), Stand: 15.10.2026
+  Gestaltung nach Styleguide HQM Härtetechnik v1.0 (18.09.2025):
+  Onyx #122436 · Anthrazit #475F6A · Off-White #CFCFCF · Ember #A4302F · Open Sans
+  Alle Bilder, Icons und Schriften sind eingebettet. Die Datei benötigt keine Internetverbindung.
+  Bearbeitbare Stellen sind mit "BEARBEITBAR" markiert, Bildplatzhalter mit "PLATZHALTER".
+-->
+<style>
+@font-face{font-family:"Open Sans";font-style:normal;font-weight:400;font-display:swap;src:url({{font400}}) format("woff2")}
+@font-face{font-family:"Open Sans";font-style:normal;font-weight:600;font-display:swap;src:url({{font600}}) format("woff2")}
+@font-face{font-family:"Open Sans";font-style:normal;font-weight:700;font-display:swap;src:url({{font700}}) format("woff2")}
+
+:root{
+  --onyx:#122436; --anthrazit:#475F6A; --offwhite:#CFCFCF; --ember:#A4302F;
+  --text:#1E2B38; --muted:#5A6C75; --line:#E1E4E6; --tint:#F4F5F6; --canvas:#ECEEEF;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--canvas);color:var(--text);font-family:"Open Sans",Arial,Helvetica,sans-serif;font-size:16px;line-height:1.6;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--onyx);text-decoration-color:rgba(164,48,47,.45);text-underline-offset:3px}
+a:hover{color:var(--ember)}
+p{margin:0 0 1em}
+h1,h2,h3{color:var(--onyx);margin:0;line-height:1.25}
+h2{font-size:30px;font-weight:700;letter-spacing:-.01em;margin-bottom:28px}
+h3{font-size:18px;font-weight:700;margin-bottom:10px}
+
+/* Seiten */
+.doc{max-width:900px;margin:0 auto;padding:32px 16px 48px}
+.page{background:#fff;margin:0 0 28px;padding:56px 64px 40px;box-shadow:0 1px 2px rgba(18,36,54,.06),0 8px 24px rgba(18,36,54,.06);position:relative}
+.kicker{display:flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ember);margin-bottom:14px}
+.kicker::before{content:"";width:28px;height:2px;background:var(--ember)}
+.page-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);margin-top:40px;padding-top:14px;font-size:12px;color:var(--muted)}
+.page-foot a{color:var(--muted);text-decoration:none}
+.lead{font-size:17px;color:var(--text)}
+.muted{color:var(--muted)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.photo{width:100%;object-fit:cover;background:var(--tint)}
+.mb{margin-bottom:32px}
+
+/* Titelseite */
+.cover{padding:0;overflow:hidden}
+.cover-head{display:flex;justify-content:space-between;align-items:center;padding:36px 64px 32px}
+.cover-head img{width:170px}
+.cover-head a{font-size:14px;font-weight:600;letter-spacing:.02em}
+.cover-band{background:var(--onyx);color:#fff;padding:44px 64px 46px}
+.cover-band .kicker{color:var(--offwhite)}
+.cover-band .kicker::before{background:var(--ember)}
+.cover-band h1{color:#fff;font-size:42px;font-weight:700;letter-spacing:-.015em;margin-bottom:12px}
+.cover-band p{margin:0;font-size:20px;color:var(--offwhite)}
+.cover-band .rule{width:64px;height:3px;background:var(--ember);margin:22px 0 18px}
+.cover-img{height:520px}
+
+/* Platzhalter */
+.ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:var(--tint);border:1px dashed #B7C0C5;color:var(--muted);font-size:13px;text-align:center;padding:16px}
+.ph strong{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--anthrazit)}
+
+/* Customer Journey */
+.journey{background:var(--onyx);padding:28px 28px 26px}
+.journey .j-kicker{font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--offwhite);margin-bottom:4px}
+.journey .j-title{font-size:19px;font-weight:700;color:#fff;margin:0}
+.j-phases{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));column-gap:8px;margin:22px 0 6px}
+.j-phases span{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--offwhite);padding-bottom:7px;border-bottom:2px solid var(--anthrazit)}
+.j-phases span.p2{border-color:var(--ember)}
+.j-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(9,minmax(0,1fr))}
+.j-steps li{position:relative;text-align:center;font-size:12.5px;font-weight:600;color:#fff;line-height:1.3;height:150px;padding-top:52px}
+.j-steps li span{position:absolute;left:-45%;right:-45%;top:100px}
+.j-steps li:nth-child(even) span{top:0;height:44px;display:flex;align-items:flex-end;justify-content:center}
+.j-steps li::after{content:"";position:absolute;top:70px;left:calc(50% + 19px);right:calc(-50% + 19px);height:2px;background:var(--anthrazit)}
+.j-steps li:last-child::after{display:none}
+.j-steps b{display:flex;align-items:center;justify-content:center;width:38px;height:38px;margin:0 auto;border-radius:50%;border:2px solid var(--ember);background:var(--onyx);color:#fff;font-size:15px;font-weight:700}
+.j-steps li.hl b{background:var(--ember);border-color:var(--ember);color:#fff}
+
+/* Prozessliste */
+.process{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:40px}
+.process li{display:flex;gap:14px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.process li::before{content:"";flex:0 0 8px;height:8px;background:var(--ember);transform:translateY(-1px)}
+
+/* Anlagenportfolio */
+.tbl-wrap{border:1px solid var(--line)}
+table.plant{width:100%;border-collapse:collapse;font-size:13px;line-height:1.4}
+.plant thead th{background:var(--onyx);color:#fff;font-weight:600;text-align:left;padding:12px 10px;vertical-align:bottom;font-size:12.5px}
+.plant thead th small{display:block;font-weight:400;color:var(--offwhite);font-size:11px}
+.plant thead th.num{text-align:right}
+.plant td{padding:10px;border-top:1px solid var(--line);vertical-align:top}
+.plant tbody tr:nth-child(even) td{background:var(--tint)}
+.plant td.name{font-weight:700;color:var(--onyx);width:21%}
+.plant td.proc{color:var(--muted);width:29%}
+.plant td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.plant td.dia{text-align:center;font-variant-numeric:tabular-nums;white-space:nowrap}
+.plant td.cnt{text-align:center;font-weight:600}
+.tbl-note{font-size:12px;color:var(--muted);margin-top:10px}
+
+/* Labor */
+.lab{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:40px}
+.lab li{display:flex;gap:18px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.lab img{width:44px;height:44px;flex:0 0 44px}
+.lab span{font-size:15px;font-weight:600;color:var(--onyx);line-height:1.35}
+.lab small{display:block;font-weight:400;font-size:13px;color:var(--muted)}
+
+/* Ansprechpartner */
+.contacts{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.contact{border:1px solid var(--line);border-left:3px solid var(--ember);padding:18px 20px}
+.contact .role{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.contact .name{font-size:17px;font-weight:700;color:var(--onyx);margin-bottom:6px}
+.contact a{display:block;font-size:14px;overflow-wrap:anywhere}
+
+/* Technologien */
+.box{background:var(--tint);border-top:3px solid var(--ember);padding:24px 26px}
+.box h3{margin-bottom:14px}
+.ticks{list-style:none;margin:0;padding:0}
+.ticks li{position:relative;padding:8px 0 8px 22px;border-bottom:1px solid var(--line);font-size:14.5px}
+.ticks li:last-child{border-bottom:0}
+.ticks li::before{content:"";position:absolute;left:0;top:16px;width:8px;height:8px;background:var(--ember)}
+
+.box-cols{display:grid;grid-template-columns:1fr 1fr;column-gap:36px}
+.box-cols .ticks li:last-child{border-bottom:0}
+/* Blocksatz (Seiten 02, 04, 08 bis 11) */
+#vorstellung p,#beratung p,#technologien p,#detail-1 p,#detail-2 p,#detail-3 p{text-align:justify;-webkit-hyphens:auto;hyphens:auto;hyphenate-limit-chars:6 3 3}
+/* Anlagen im Detail */
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start;margin-bottom:36px}
+.feature:last-child{margin-bottom:0}
+.feature.reverse .feature-img{order:-1}
+.feature .sub{font-size:14px;font-weight:600;color:var(--ember);margin:-4px 0 12px}
+.hero{height:300px;margin-bottom:36px}
+
+.feature.mid{align-items:center}
+.fimg{height:230px}
+.adv-icons{display:grid;grid-template-columns:repeat(3,1fr);gap:18px 12px;background:var(--tint);padding:22px 16px}
+.adv-icons figure{margin:0;text-align:center}
+.adv-icons svg{width:46px;height:46px;fill:none;stroke:var(--anthrazit);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:block;margin:0 auto 8px}
+.adv-icons svg .ac{stroke:var(--ember)}
+.adv-icons figcaption{font-size:12px;font-weight:600;color:var(--onyx);line-height:1.3}
+/* Zertifikate */
+.certs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cert{border:1px solid var(--line);display:flex;flex-direction:column}
+.cert .scan{aspect-ratio:210/297;object-fit:contain;background:#fff;border-bottom:1px solid var(--line)}
+.cert .ph{aspect-ratio:210/297;border:0;border-bottom:1px solid var(--line)}
+.cert .meta{padding:16px 18px}
+.cert .norm{font-size:16px;font-weight:700;color:var(--onyx)}
+.cert dl{margin:8px 0 0;font-size:13px;display:grid;grid-template-columns:auto 1fr;gap:2px 10px}
+.cert dt{color:var(--muted)}
+.cert dd{margin:0}
+
+/* Abschluss */
+.end-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:32px}
+.end-head img{width:170px}
+.sites{display:grid;grid-template-columns:1fr 1fr auto;gap:32px;align-items:center;background:var(--onyx);color:#fff;border-top:3px solid var(--ember);padding:28px 32px;margin-bottom:32px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.site h3{font-size:16px;color:#fff}
+.site p{font-size:14px;margin:0;line-height:1.7;color:#fff}
+.site a{color:#fff;overflow-wrap:normal;text-decoration-color:rgba(255,255,255,.5)}
+.site .lbl{display:inline-block;min-width:22px;color:var(--offwhite,#CFCFCF)}
+.qr{text-align:center;font-size:12px;color:#fff}
+.qr a{color:#fff}
+.qr img{width:112px;margin:0 auto 8px;background:#fff;padding:6px}
+
+/* Tablet und Handy */
+@media (max-width:760px){
+  .doc{padding:0}
+  .page{margin:0 0 10px;padding:36px 20px 28px;box-shadow:none}
+  h2{font-size:24px;margin-bottom:20px}
+  .cols,.process,.lab,.contacts,.feature,.certs,.box-cols{grid-template-columns:1fr}
+  .box-cols .ticks:first-child li:last-child{border-bottom:1px solid var(--line)}
+  .cols{gap:8px}
+  .feature{gap:18px}
+  .feature.reverse .feature-img{order:0}
+  .cover-head{padding:22px 20px}
+  .cover-head img{width:112px}
+  .cover-head a{font-size:13px}
+  .cover-band{padding:30px 20px 32px}
+  .cover-band h1{font-size:30px}
+  .cover-band p{font-size:17px}
+  .cover-img{height:300px}
+  .hero{height:200px}
+  .sites{grid-template-columns:1fr;gap:20px;padding:22px 20px}
+  .qr{text-align:left}.qr img{margin:0 0 6px}
+  /* Tabelle als Karten */
+  .tbl-wrap{border:0}
+  table.plant,.plant tbody,.plant tr,.plant td{display:block;width:100%}
+  .plant thead{display:none}
+  .plant tr{border:1px solid var(--line);border-left:3px solid var(--onyx);margin-bottom:12px;padding:12px 14px}
+  .plant tbody tr:nth-child(even) td{background:none}
+  .plant td{border:0;padding:3px 0;display:flex;justify-content:space-between;gap:16px;text-align:right!important;width:100%!important}
+  .plant td::before{content:attr(data-label);color:var(--muted);font-weight:400;text-align:left}
+  .plant td.name{font-size:16px;padding-bottom:4px}
+  .plant td.name::before,.plant td.proc::before{content:none}
+  .plant td.proc{display:block;text-align:left!important;padding-bottom:8px;margin-bottom:4px;border-bottom:1px solid var(--line)}
+  .plant td.num,.plant td.dia,.plant td.cnt{font-weight:600}
+  .plant td.empty{display:none}
+  /* Customer Journey senkrecht */
+  .journey{height:auto;padding:24px 20px}
+  .journey .j-title{margin-bottom:8px}
+  .j-phases{display:none}
+  .j-steps{grid-template-columns:1fr}
+  .j-steps li{display:flex;align-items:center;gap:14px;text-align:left;font-size:14.5px;padding:0 0 14px;height:auto}
+  .j-steps li span,.j-steps li:nth-child(even) span{position:static;height:auto;display:block}
+  .j-steps li::after{top:38px;bottom:0;left:18px;right:auto;width:2px;height:auto}
+  .j-steps b{margin:0;flex:0 0 38px}
+  .j-steps li[data-phase]{flex-wrap:wrap}
+  .j-steps li[data-phase]::before{content:attr(data-phase);flex:0 0 100%;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--offwhite);padding:10px 0 7px;margin-bottom:4px;border-bottom:2px solid var(--anthrazit)}
+  .j-steps li.p2[data-phase]::before{border-bottom-color:var(--ember)}
+  .j-steps li[data-phase]::after{top:calc(38px + 44px)}
+}
+
+/* Druck A4 */
+@page{size:A4;margin:12mm 14mm}
+@media print{
+  body{background:#fff;font-size:10.5pt;line-height:1.5}
+  .doc{max-width:none;padding:0}
+  .page{box-shadow:none;margin:0;padding:0;break-after:page;page-break-after:always}
+  .page:last-child{break-after:auto;page-break-after:auto}
+  h2{font-size:21pt;margin-bottom:16pt}
+  .cover-head{padding:4mm 0 8mm}
+  .cover-band{padding:12mm 10mm}
+  .cover-img{height:150mm}
+  .page-foot{margin-top:18pt}
+  .hero{height:68mm;margin-bottom:18pt}
+  .feature{margin-bottom:18pt;gap:22pt;break-inside:avoid}
+  .cover-img{height:158mm}
+  #detail-3 img.photo{height:42mm!important}
+  #detail-3 .feature img.photo{height:52mm!important}
+  #anlagen .page-foot,#detail-3 .page-foot{margin-top:8pt}
+  #anlagen h2{margin-bottom:10pt}
+  #technologien img.photo{height:68mm!important}
+  .fimg{height:52mm}
+  #detail-1 .hero{height:62mm}
+  .adv-icons{padding:12pt 10pt;gap:10pt 8pt}
+  .adv-icons svg{width:36px;height:36px}
+  #technologien .box{padding:14pt 16pt}
+  #technologien .mb{margin-bottom:14pt}
+  #detail-3 .mb{margin-bottom:14pt}
+  .plant{font-size:7.9pt;line-height:1.3}
+  .plant td{padding:2.6pt 6pt}
+  .plant tr{break-inside:avoid}
+  .plant thead th{padding:6pt}
+  .contact,.cert,.lab li,.process li{break-inside:avoid}
+  .lab li{padding:9pt 0}
+  .certs{gap:12pt}
+  a{text-decoration:none}
+}
+</style>
+</head>
+<body>
+<main class="doc">
+
+<!-- ============ 01 TITELSEITE ============ -->
+<section class="page cover" id="titel">
+  <header class="cover-head">
+    <!-- Logo: Originaldatei von HQM, Stand 15.10.2026 -->
+    <a href="https://www.hqm-haertetechnik.de/" target="_blank" rel="noopener" style="border:0;text-decoration:none"><img src="{{logo}}" alt="HQM Härtetechnik Logo"></a>
+    <a href="https://www.hqm-haertetechnik.de/" target="_blank" rel="noopener">www.hqm-haertetechnik.de</a>
+  </header>
+  <div class="cover-band">
+    <div class="kicker">Unternehmensvorstellung</div>
+    <h1>Wachstum und Innovation</h1>
+    <div class="rule"></div>
+    <p>für beste Produkte und Leistungen</p>
+  </div>
+  <img class="photo cover-img" src="{{titel}}" alt="Glühende Bauteilcharge beim Ausfahren aus einem Schachtofen">
+</section>
+
+<!-- ============ 02 UNTERNEHMENSVORSTELLUNG ============ -->
+<section class="page" id="vorstellung">
+  <div class="kicker">Unternehmensvorstellung</div>
+  <h2>Härtetechnik auf höchstem Niveau</h2>
+  <img class="photo mb" style="height:320px" src="{{vorstellung}}" alt="Wärmebehandlungsanlage mit Chargiergestellen">
+  <div class="cols">
+    <div>
+      <h3>HQM Härtetechnik ist Teil der HQM-Gruppe</h3>
+      <p>Als Teil der HQM-Gruppe können wir über unser eigenes Leistungsspektrum hinaus auf das gesamte Angebot der Gruppe zurückgreifen. Die HQM-Gruppe ist ein etablierter Dienstleister für die Bereiche Automotive, Luftfahrt, Motorsport, Guss- und Schmiedetechnik sowie weitere Branchen wie Industrie und Windkraft. Mit sechs Standorten, 800 qualifizierten Fachkräften und insgesamt 58.000 m² Produktionsfläche verfügt die HQM-Gruppe über die Kapazität, Ihre Projekte umzusetzen.</p>
+    </div>
+    <div>
+      <h3>Metallkompetenz aus Leipzig und Wuppertal</h3>
+      <p>Die HQM Härtetechnik GmbH bietet seit 1993 Härteverfahren und Werkstoffveredelung für Automobilbauer und weitere Branchen wie z.&nbsp;B. die Windkraftindustrie. Wir verfügen über entsprechende Fachkompetenz und modernste Anlagen für perfekte Bauteile in höchster Qualität. Das Portfolio des Unternehmens umfasst das ganze Spektrum modernster Härteverfahren und entwickelt sich parallel zu den stetig wachsenden Anforderungen des Kundenstamms stetig weiter.</p>
+    </div>
+  </div>
+  <footer class="page-foot"><span>HQM Härtetechnik GmbH</span><span>02</span></footer>
+</section>
+
+<!-- ============ 03 WÄRMEBEHANDLUNGSPROZESSE ============ -->
+<section class="page" id="prozesse">
+  <!-- Bild ersetzt die frühere Historienleiste (Firmengebäude Leipzig, Fraunhoferstraße) -->
+  <img class="photo mb" style="height:260px;object-position:72% 50%" src="{{gebaeude}}" alt="Firmengebäude der HQM Härtetechnik in Leipzig mit dem Schriftzug Härterei und Qualitätsmanagement">
+  <div class="kicker">HQM Härtetechnik</div>
+  <h2>Wärmebehandlungsprozesse</h2>
+  <ul class="process">
+    <li>Aufkohlen · Einsatzhärten · Carbonitrieren</li>
+    <li>Glühen mit und ohne Atmosphäre</li>
+    <li>Vergüten · Einfach- und Doppelhärten</li>
+    <li>Blindhärten</li>
+    <li>Gasnitrieren · Nitrocarburieren · Oxidieren</li>
+    <li>Bainitisieren</li>
+    <li>Festigkeitsstrahlen · Reinigungsstrahlen</li>
+    <li>Aluminium-Wärmebehandlung</li>
+    <li>Niederdruckaufkohlung im Vakuum mit Helium-Hochdruckgasabschreckung</li>
+    <li>Vakuumhärten, Vergüten im Vakuum</li>
+    <li>Sekundärhärten im Vakuum</li>
+    <li>Glühen im Vakuum</li>
+  </ul>
+  <footer class="page-foot"><span>HQM Härtetechnik GmbH</span><span>03</span></footer>
+</section>
+
+<!-- ============ 04 BERATUNG UND QUALITÄT ============ -->
+<section class="page" id="beratung">
+  <div class="kicker">Von der Beratung bis zum fertigen Produkt</div>
+  <!-- Grafik Customer Journey nach Folie 17 der Unternehmenspräsentation (PR_20260713). Schritte und Phasen unverändert übernommen. -->
+  <div class="journey mb" role="img" aria-label="Customer Journey in neun Schritten von der Anfrage bis zur Lieferung">
+    <div class="j-kicker">Prozessablauf</div>
+    <div class="j-title">Von der Anfrage bis zur Lieferung</div>
+    <div class="j-phases"><span style="grid-column:1/7">Anfrage und Angebot</span><span class="p2" style="grid-column:7/10">Ausführung und Lieferung</span></div>
+    <ol class="j-steps">
+      <li data-phase="Anfrage und Angebot"><b>1</b><span>Anfrage und Anforderungen</span></li>
+      <li><b>2</b><span>Beratung zur Spezifikation</span></li>
+      <li class="hl"><b>3</b><span>Technische Analyse und Simulation</span></li>
+      <li><b>4</b><span>Kalkulation</span></li>
+      <li><b>5</b><span>Angebot</span></li>
+      <li class="hl"><b>6</b><span>Technologische Klärung</span></li>
+      <li class="p2" data-phase="Ausführung und Lieferung"><b>7</b><span>Wärmebehandlung</span></li>
+      <li class="hl"><b>8</b><span>Laborprüfung und Dokumentation</span></li>
+      <li><b>9</b><span>Lieferung</span></li>
+    </ol>
+  </div>
+  <div class="cols">
+    <div>
+      <h3>Von A bis Z aus einer Hand</h3>
+      <p>Als unser Kunde werden Sie von der ersten Beratung an optimal betreut. Wir möchten Ihre produktionsbedingten Anforderungen genau verstehen, um die perfekte Lösung für Sie zu entwickeln. Wir praktizieren ein konsequent umgesetztes Projektmanagement als Basis für die punktgenaue Umsetzung aller Prozessschritte. Die Bauteile werden mittels leistungsstarker Maschinen und Anlagen bearbeitet und sind zum vereinbarten Zeitpunkt in gewünschter Menge bei Ihnen vor Ort. Unsere prozessbegleitenden Qualitätskontrollen garantieren eine hohe Teileverfügbarkeit für eine direkte Implementierung in Ihre Produktion.</p>
+    </div>
+    <div>
+      <h3>Mit Sicherheit Qualität</h3>
+      <p>Als verantwortungsvoller Partner in Branchen mit höchsten Sicherheitsanforderungen sind wir als anerkannter Spezialist für Wärmebehandlungen an beiden Standorten, in Leipzig und Wuppertal, gemäß IATF 16949 sowie DIN EN ISO 50001 zertifiziert. Wir verfügen zudem über kundenspezifische Freigaben für die Branchen Industriegüter, Windkraft und Automotive.</p>
+    </div>
+  </div>
+  <footer class="page-foot"><span>HQM Härtetechnik GmbH</span><span>04</span></footer>
+</section>
+
+<!-- ============ 05 ANLAGENPORTFOLIO ============ -->
+<section class="page" id="anlagen">
+  <div class="kicker">Von der Beratung bis zum fertigen Produkt</div>
+  <h2>Anlagenportfolio</h2>
+  <div class="tbl-wrap">
+  <table class="plant">
+    <thead><tr><th>Anlage</th><th>Prozess</th><th style="text-align:center">Anzahl</th><th class="num">Breite<small>in mm</small></th><th class="num">Höhe<small>in mm</small></th><th class="num">Länge<small>in mm</small></th><th class="num">Beladung<small>in kg</small></th></tr></thead>
+    <tbody>
+      <tr><td class="name">Mehrzweckkammerofen</td><td class="proc">Schutzgashärten / Aufkohlen / Einsatzhärten / Carbonitrieren / Vergüten / Glühen</td><td class="cnt" data-label="Anzahl">6</td><td class="num" data-label="Breite in mm">900</td><td class="num" data-label="Höhe in mm">1500</td><td class="num" data-label="Länge in mm">1250</td><td class="num" data-label="Beladung in kg">1800</td></tr>
+      <tr><td class="name">Mehrzweckkammerofen</td><td class="proc">Schutzgashärten / Aufkohlen / Einsatzhärten / Carbonitrieren / Vergüten / Glühen</td><td class="cnt" data-label="Anzahl">5</td><td class="num" data-label="Breite in mm">580</td><td class="num" data-label="Höhe in mm">800</td><td class="num" data-label="Länge in mm">1200</td><td class="num" data-label="Beladung in kg">1000</td></tr>
+      <tr><td class="name">Anlassofen</td><td class="proc">Anlassen</td><td class="cnt" data-label="Anzahl">4</td><td class="num" data-label="Breite in mm">700</td><td class="num" data-label="Höhe in mm">1300</td><td class="num" data-label="Länge in mm">800</td><td class="num" data-label="Beladung in kg">1000</td></tr>
+      <tr><td class="name">Anlassofen</td><td class="proc">Anlassen unter N₂ / Glühen unter N₂</td><td class="cnt" data-label="Anzahl">4</td><td class="num" data-label="Breite in mm">700</td><td class="num" data-label="Höhe in mm">1300</td><td class="num" data-label="Länge in mm">800</td><td class="num" data-label="Beladung in kg">1000</td></tr>
+      <tr><td class="name">Anlassofen</td><td class="proc">Anlassen</td><td class="cnt" data-label="Anzahl">4</td><td class="num empty"></td><td class="num empty"></td><td class="num empty"></td><td class="num empty"></td></tr>
+      <tr><td class="name">Schachtofen</td><td class="proc">Glühen unter N₂</td><td class="cnt" data-label="Anzahl">2</td><td class="dia" colspan="2" data-label="Durchmesser in mm">Ø 1400</td><td class="num" data-label="Länge in mm">1500</td><td class="num" data-label="Beladung in kg">3000</td></tr>
+      <tr><td class="name">Schachtofen</td><td class="proc">Schutzgashärten / Aufkohlen / Einsatzhärten / Vergüten / Glühen</td><td class="cnt" data-label="Anzahl">4</td><td class="dia" colspan="2" data-label="Durchmesser in mm">Ø 1400</td><td class="num" data-label="Länge in mm">1500</td><td class="num" data-label="Beladung in kg">5000</td></tr>
+      <tr><td class="name">Schachtofen</td><td class="proc">Schutzgashärten / Aufkohlen / Einsatzhärten / Vergüten / Glühen</td><td class="cnt" data-label="Anzahl">4</td><td class="dia" colspan="2" data-label="Durchmesser in mm">Ø 1400</td><td class="num" data-label="Länge in mm">2150</td><td class="num" data-label="Beladung in kg">5000</td></tr>
+      <tr><td class="name">Schachtofen</td><td class="proc">Gasnitrieren</td><td class="cnt" data-label="Anzahl">2</td><td class="dia" colspan="2" data-label="Durchmesser in mm">Ø 1500</td><td class="num" data-label="Länge in mm">1500</td><td class="num" data-label="Beladung in kg">3000</td></tr>
+      <tr><td class="name">Hubherdofen</td><td class="proc">Glühen ohne Atmosphäre / Bainitisieren</td><td class="cnt" data-label="Anzahl">2</td><td class="num" data-label="Breite in mm">1800</td><td class="num" data-label="Höhe in mm">5000</td><td class="num" data-label="Länge in mm">1100</td><td class="num" data-label="Beladung in kg">8500</td></tr>
+      <tr><td class="name">Aluminiumofen Lösungsglühen</td><td class="proc">Wärmebehandlung Aluminium</td><td class="cnt" data-label="Anzahl">2</td><td class="num" data-label="Breite in mm">3000</td><td class="num" data-label="Höhe in mm">2000</td><td class="num" data-label="Länge in mm">2700</td><td class="num" data-label="Beladung in kg">4000</td></tr>
+      <tr><td class="name">Aluminiumofen Auslagern</td><td class="proc">Wärmebehandlung Aluminium</td><td class="cnt" data-label="Anzahl">2</td><td class="num" data-label="Breite in mm">3000</td><td class="num" data-label="Höhe in mm">2000</td><td class="num" data-label="Länge in mm">2700</td><td class="num" data-label="Beladung in kg">4000</td></tr>
+      <tr><td class="name">Vakuumanlage</td><td class="proc">Vergüten / Einsatzhärten / Vakuumhärten / Sekundärhärten / Glühen</td><td class="cnt" data-label="Anzahl">3 Kammern</td><td class="num" data-label="Breite in mm">600</td><td class="num" data-label="Höhe in mm">1000</td><td class="num" data-label="Länge in mm">750</td><td class="num" data-label="Beladung in kg">1000</td></tr>
+      <tr><td class="name">Festigkeitsstrahlen</td><td class="proc">Festigkeitsstrahlen</td><td class="cnt" data-label="Anzahl">4</td><td class="dia" colspan="2" data-label="Durchmesser in mm">Ø 225</td><td class="num" data-label="Länge in mm">200</td><td class="num" data-label="Beladung in kg">5</td></tr>
+      <tr><td class="name">Reinigungsstrahlen</td><td class="proc">Reinigungsstrahlen</td><td class="cnt" data-label="Anzahl">1</td><td class="dia" colspan="2" data-label="Durchmesser in mm">Ø 1500</td><td class="num" data-label="Länge in mm">2000</td><td class="num" data-label="Beladung in kg">5000</td></tr>
+      <tr><td class="name">Reinigungsstrahlen</td><td class="proc">Reinigungsstrahlen</td><td class="cnt" data-label="Anzahl">1</td><td class="dia" colspan="2" data-label="Durchmesser in mm">Ø 1500</td><td class="num" data-label="Länge in mm">2000</td><td class="num" data-label="Beladung in kg">3000</td></tr>
+      <tr><td class="name">Waschanlage</td><td class="proc">Wässrige alkalische Lösung</td><td class="cnt" data-label="Anzahl">2</td><td class="num" data-label="Breite in mm">900</td><td class="num" data-label="Höhe in mm">1500</td><td class="num" data-label="Länge in mm">1250</td><td class="num" data-label="Beladung in kg">1800</td></tr>
+      <tr><td class="name">Waschanlage</td><td class="proc">Wässrige alkalische Lösung</td><td class="cnt" data-label="Anzahl">2</td><td class="num" data-label="Breite in mm">580</td><td class="num" data-label="Höhe in mm">800</td><td class="num" data-label="Länge in mm">1200</td><td class="num" data-label="Beladung in kg">1000</td></tr>
+      <tr><td class="name">Waschanlage Nitrieren</td><td class="proc">Wässrige alkalische Lösung</td><td class="cnt" data-label="Anzahl">1</td><td class="dia" colspan="2" data-label="Durchmesser in mm">Ø 1500</td><td class="num" data-label="Länge in mm">1500</td><td class="num" data-label="Beladung in kg">3000</td></tr>
+      <tr><td class="name">Waschanlage Vakuum</td><td class="proc">Wässrige alkalische Lösung</td><td class="cnt" data-label="Anzahl">1</td><td class="num" data-label="Breite in mm">600</td><td class="num" data-label="Höhe in mm">1000</td><td class="num" data-label="Länge in mm">750</td><td class="num" data-label="Beladung in kg">1000</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <footer class="page-foot"><span>HQM Härtetechnik GmbH</span><span>05</span></footer>
+</section>
+
+<!-- ============ 06 WERKSTOFFPRÜFUNG UND LABOR ============ -->
+<section class="page" id="labor">
+  <div class="kicker">HQM Härtetechnik</div>
+  <h2>Werkstoffprüfung und Labor</h2>
+  <ul class="lab">
+    <li><img src="{{icon00}}" alt=""><span>Härteprüfung HRC · HV · HB</span></li>
+    <li><img src="{{icon01}}" alt=""><span>Metallographische Untersuchungen<small>CHD-/NHD-Messungen</small></span></li>
+    <li><img src="{{icon02}}" alt=""><span>Mikroskopische Auswertungen<small>Gefügebestimmung, Verbindungsschicht</small></span></li>
+    <li><img src="{{icon03}}" alt=""><span>Randentkohlung und Randoxidation</span></li>
+    <li><img src="{{icon04}}" alt=""><span>Makroskopische Untersuchungen</span></li>
+    <li><img src="{{icon05}}" alt=""><span>Spektralanalyse</span></li>
+    <li><img src="{{icon06}}" alt=""><span>Rasterelektronenmikroskopie</span></li>
+    <li><img src="{{icon07}}" alt=""><span>Röntgenanalysen</span></li>
+    <li><img src="{{icon08}}" alt=""><span>Bemusterungen EMPB / PPAP</span></li>
+    <li><img src="{{icon09}}" alt=""><span>Zugproben</span></li>
+    <li><img src="{{icon10}}" alt=""><span>Kerbschlagprüfungen</span></li>
+  </ul>
+  <footer class="page-foot"><span>HQM Härtetechnik GmbH</span><span>06</span></footer>
+</section>
+
+<!-- ============ 07 ANSPRECHPARTNER ============ -->
+<section class="page" id="ansprechpartner">
+  <div class="kicker">HQM Härtetechnik</div>
+  <h2>Ansprechpartner im Unternehmen</h2>
+  <!-- BEARBEITBAR: Ansprechpartner
+       Je Person ein <article class="contact">-Block. Zum Ergänzen einen Block kopieren und anpassen.
+       Telefonnummer optional: <a href="tel:+49...">+49 ...</a> -->
+  <div class="contacts">
+    <article class="contact">
+      <div class="role">Geschäftsführung</div>
+      <div class="name">Silvio Richtsteiger</div>
+      <a href="mailto:silvio.richtsteiger@hqm-gruppe.de">silvio.richtsteiger@hqm-gruppe.de</a>
+    </article>
+    <article class="contact">
+      <div class="role">Werksleitung Wuppertal</div>
+      <div class="name">Michael Biengräber</div>
+      <a href="mailto:michael.biengraeber@hqm-gruppe.de">michael.biengraeber@hqm-gruppe.de</a>
+    </article>
+    <article class="contact">
+      <div class="role">Vertrieb</div>
+      <div class="name">Carsten Klinke</div>
+      <a href="tel:+4915155343781">+49 151 55343781</a>
+      <a href="mailto:carsten.klinke@hqm-gruppe.de">carsten.klinke@hqm-gruppe.de</a>
+    </article>
+    <article class="contact">
+      <div class="role">Qualität</div>
+      <div class="name">Gregor Rühle</div>
+      <a href="mailto:gregor.ruehle@hqm-gruppe.de">gregor.ruehle@hqm-gruppe.de</a>
+    </article>
+    <article class="contact">
+      <div class="role">Arbeitsvorbereitung</div>
+      <div class="name">Adrian E. Ocampo</div>
+      <a href="mailto:Adrian.Ocampo@hqm-gruppe.de">Adrian.Ocampo@hqm-gruppe.de</a>
+    </article>
+    <article class="contact">
+      <div class="role">Konstruktion</div>
+      <div class="name">Heiko Ehrenpfordt</div>
+      <a href="mailto:heiko.ehrenpfordt@hqm-gruppe.de">heiko.ehrenpfordt@hqm-gruppe.de</a>
+    </article>
+  </div>
+  <!-- ENDE BEARBEITBAR: Ansprechpartner -->
+  <img class="photo" style="height:300px;margin-top:32px" src="{{halle}}" alt="Produktionshalle mit Schachtöfen">
+  <footer class="page-foot"><span>HQM Härtetechnik GmbH</span><span>07</span></footer>
+</section>
+
+<!-- ============ 08 NEUE TECHNOLOGIEN ============ -->
+<section class="page" id="technologien">
+  <div class="kicker">Neue Technologien</div>
+  <h2>Bewährte Verfahren für neue Technologien</h2>
+  <div class="box mb">
+    <h3>Aktuelle Projekte im Bereich der E-Mobilität</h3>
+    <div class="box-cols">
+      <ul class="ticks">
+        <li>Plattformprojekt E-Antrieb Vakuumeinsatzhärten von Eingangswellen</li>
+        <li>Plattformgetriebeprojekte für die Hybridisierung</li>
+        <li>Großserienprojekte im Bereich E-Antriebsstrang</li>
+      </ul>
+      <ul class="ticks">
+        <li>Weitere Serienprojekte im Bereich E-Mobilität und im Sportwagensegment</li>
+        <li>Prototypenentwicklung im Bereich der Hybridisierung für alle namhaften Automobilhersteller in Europa</li>
+      </ul>
+    </div>
+  </div>
+  <img class="photo mb" style="height:300px" src="{{technologien}}" alt="Vakuumanlage mit beladener Charge">
+  <!-- Text ab „Neue Antriebskonzepte“ ergänzt am 15.10.2026 auf Basis von hqm-haertetechnik.de (Niederdruckaufkohlen, Prozessbewertung, Startseite). Entwurf, Freigabe ausstehend. -->
+  <p class="lead">Als langjähriger Partner renommierter Automobilzulieferer (Tier&nbsp;1) setzen wir unser Know-how ein, um den Strukturwandel im Fahrzeugbereich zu unterstützen und zu gestalten.</p>
+  <p>Neue Antriebskonzepte stellen hohe Anforderungen an Maßhaltigkeit, Verschleißfestigkeit und Wiederholgenauigkeit der Bauteile. Mit dem Niederdruckaufkohlen im Vakuum und der anschließenden Hochdruck-Gasabschreckung erzeugen wir eine harte, verschleißfeste Randschicht bei gleichzeitig zähem Kern. Die Aufkohlungstiefe lässt sich präzise einstellen, und durch die gleichmäßige Abkühlung bleibt der Verzug auch bei komplexen Geometrien gering. Da der Prozess sauerstofffrei abläuft, entsteht keine Randoxidation.</p>
+  <p>Bereits vor dem Serienstart prüfen wir in einer Machbarkeitsbewertung, ob Werkstoff, Bauteilgeometrie und Verfahren die geforderten Eigenschaften erreichen. Unsere dokumentierte Prozesssteuerung und die prozessbegleitenden Qualitätskontrollen sichern konstante Materialeigenschaften über die gesamte Serie. So schaffen wir vom Prototyp bis zur Großserie Planungssicherheit und verlässliche Serienanläufe.</p>
+  <footer class="page-foot"><span>HQM Härtetechnik GmbH</span><span>08</span></footer>
+</section>
+
+<!-- ============ 09 ANLAGEN IM DETAIL I ============ -->
+<section class="page" id="detail-1">
+  <div class="kicker">HQM Härtetechnik</div>
+  <h2>Anlagen im Detail</h2>
+  <img class="photo hero" src="{{vakuum_linie}}" alt="Vakuumanlage mit drei Behandlungskammern">
+  <div class="feature mid">
+    <div>
+      <h3>Vakuumanlage mit 3 Kammern</h3>
+      <p>Beim Vakuumeinsatzhärten bzw. Härten verhindert das Vakuum während der Aufheiz- und Haltephase eine unerwünschte Reaktion der Bauteile mit Ofengasen. Zum Abschrecken wird Helium unter Hochdruck eingesetzt, wodurch auch niedrig legierte Werkstoffe sicher behandelt werden können. Die Methode bietet Vorteile wie geringe Verzüge bei komplexen Geometrien und reduzierte Rissgefahr bei großen Querschnittsübergängen. Dafür stehen drei Behandlungskammern zur Verfügung.</p>
+    </div>
+    <img class="photo feature-img fimg" src="{{vakuum}}" alt="Chargierte Bauteile für die Vakuumbehandlung">
+  </div>
+  <div class="feature mid">
+    <div>
+      <h3>Mehrzweckkammeröfen</h3>
+      <p>In unseren Mehrzweckkammeröfen können Bauteile vom Einzelteil bis zur Großserie unter Schutzgas wärmebehandelt werden. Je nach Anforderung kommen Verfahren wie Aufkohlen, Härten, Vergüten, Einsatzhärten oder Carbonitrieren zum Einsatz. Für das Abschrecken stehen verschiedene Öle mit unterschiedlichen Abkühleigenschaften zur optimalen Einstellung von Maß- und Verzugsverhalten zur Verfügung.</p>
+    </div>
+    <img class="photo feature-img fimg" style="object-position:50% 40%" src="{{mehrzweck}}" alt="Mehrzweckkammerofen">
+  </div>
+  <footer class="page-foot"><span>HQM Härtetechnik GmbH</span><span>09</span></footer>
+</section>
+
+<!-- ============ 10 ANLAGEN IM DETAIL II ============ -->
+<section class="page" id="detail-2">
+  <div class="kicker">HQM Härtetechnik</div>
+  <h2>Anlagen im Detail</h2>
+  <div class="feature mid">
+    <div>
+      <h3>Durchlaufkammerofen</h3>
+      <p class="sub">Ein innovatives Konzept mit AICHELIN</p>
+      <p>Um den steigenden Marktanforderungen hinsichtlich Qualität, Produktionskapazität und Flexibilität gerecht zu werden, haben wir gemeinsam mit der Firma AICHELIN diesen Ofen entwickelt. Entstanden ist ein einzigartiger Ofentyp mit schutzgasdichter Chargenumsetzung durch vollständig innenliegenden Stoßantrieb.</p>
+    </div>
+    <img class="photo feature-img fimg" src="{{durchlaufkammer}}" alt="Durchlaufkammerofen in der Produktionshalle">
+  </div>
+  <div class="feature mid">
+    <div>
+      <h3 style="font-size:15px">Vorteile auf einen Blick</h3>
+      <ul class="ticks">
+        <li>Chargenumsetzung ohne Beeinflussung der Atmosphäre durch Frischlufteintrag</li>
+        <li>Hohe Durchsatzleistung bei wenig Flächenbedarf</li>
+        <li>Hohe Prozessflexibilität durch 2-Kammersystem in Kombination mit Öl- oder Luftabschreckung</li>
+        <li>Hoher Wirkungsgrad des Brennersystems und niedriger Schadstoffausstoß</li>
+        <li>„Kalte“ Ofenaußenwandungen durch optimierte Isolierung</li>
+      </ul>
+    </div>
+      <!-- Icons zu den Vorteilen des Durchlaufkammerofens, als SVG gezeichnet -->
+      <div class="adv-icons" aria-hidden="true">
+        <figure><svg viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="26" rx="2"/><path class="ac" d="M13 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0 3-1 4-1"/><path class="ac" d="M13 27c2-2 4-2 6 0s4 2 6 0 4-2 6 0 3-1 4-1"/><path d="M10 36v5M38 36v5"/></svg><figcaption>Schutzgasdichte Chargen&shy;umsetzung</figcaption></figure>
+        <figure><svg viewBox="0 0 48 48"><rect x="7" y="15" width="11" height="11" rx="1"/><rect x="21" y="15" width="11" height="11" rx="1"/><path d="M4 30h40"/><circle cx="10" cy="35" r="2.5"/><circle cx="24" cy="35" r="2.5"/><circle cx="38" cy="35" r="2.5"/><path class="ac" d="M35 20.5h9m-3.5-3.5 3.5 3.5-3.5 3.5"/></svg><figcaption>Hohe Durchsatz&shy;leistung</figcaption></figure>
+        <figure><svg viewBox="0 0 48 48"><path d="M15 8c-5 8-8 12-8 17a8 8 0 0 0 16 0c0-5-3-9-8-17z"/><path class="ac" d="M28 18h9a4 4 0 1 0-4-4M28 26h14M28 34h8a4 4 0 1 1-4 4"/></svg><figcaption>Öl- oder Luft&shy;abschreckung</figcaption></figure>
+        <figure><svg viewBox="0 0 48 48"><path class="ac" d="M24 6c2 7 10 11 10 20a10 10 0 0 1-20 0c0-5 3-8 5-11 1 4 3 5 5 5-1-5-1-9 0-14z"/><path d="M8 42h32M14 42v-4h20v4"/></svg><figcaption>Effizientes Brenner&shy;system</figcaption></figure>
+        <figure><svg viewBox="0 0 48 48"><path d="M7 8v32M13 8v32M19 8v32"/><rect x="29" y="7" width="7" height="23" rx="3.5"/><circle cx="32.5" cy="35" r="5"/><path class="ac" d="M32.5 16v16"/></svg><figcaption>Optimierte Isolierung</figcaption></figure>
+      </div>
+  </div>
+  <div class="feature mid">
+    <div>
+      <h3>Schachtöfen</h3>
+      <p>In unseren Schachtöfen können große Bauteile des allgemeinen Maschinenbaus, der Windkraft oder des Großgetriebebaus vom Einzel- bis zum Serienteil unter Schutzgas wärmebehandelt werden. Dabei können, den Anforderungen an das Bauteil entsprechend, die verschiedensten Wärmebehandlungsverfahren zum Einsatz kommen, z.&nbsp;B. Aufkohlen, Härten, Vergüten oder Einsatzhärten.</p>
+    </div>
+    <img class="photo feature-img fimg" src="{{schacht}}" alt="Glühende Charge über einem Schachtofen">
+  </div>
+    <footer class="page-foot"><span>HQM Härtetechnik GmbH</span><span>10</span></footer>
+</section>
+
+<!-- ============ 11 ANLAGEN IM DETAIL III ============ -->
+<section class="page" id="detail-3">
+  <div class="kicker">HQM Härtetechnik</div>
+  <h2>Anlagen im Detail</h2>
+  <img class="photo" style="height:240px;margin-bottom:24px" src="{{nitrier}}" alt="Chargierkorb mit Kleinteilen für die Nitrieranlage">
+  <h3>Schachtofennitrieranlage</h3>
+  <p class="mb">In unserer Schachtofennitrieranlage wird bei Temperaturen von 540–580&nbsp;°C das verzugsarme Nitrocarburieren durchgeführt. Die sich dabei ausbildende Verbindungsschicht steht im Vordergrund und sorgt für gute Verschleißwiderstände gegenüber Adhäsion und Abrasion. Die Dauerfestigkeit und die Korrosionsbeständigkeit werden erheblich erhöht. Das Verfahren wird häufig bei unlegierten oder niedrig legierten Werkstoffen eingesetzt, um den Korrosionsschutz zu nutzen.</p>
+  <div class="feature mid">
+    <div>
+      <h3>Durchlaufbandanlagen</h3>
+      <p>Unsere vollautomatischen Förderbandöfen (Durchlaufbandanlagen) am Standort Wuppertal werden ausschließlich zum Vergüten, also dem Härten mit anschließenden hohen Anlasstemperaturen, von Massenkleinteilen wie Schrauben, Muttern, Scheiben und ähnlichen Umformteilen eingesetzt. Sie bieten hohe Durchsatzleistung, gleichbleibende Qualität und exzellente Reproduzierbarkeit. Das bearbeitbare Teilespektrum umfasst rotationssymmetrische Bauteile mit Durchmessern von 6 bis 30&nbsp;mm und Längen bis 140&nbsp;mm.</p>
+    </div>
+    <img class="photo feature-img fimg" src="{{durchlaufband}}" alt="Durchlaufbandanlage am Standort Wuppertal">
+  </div>
+  <div class="feature mid">
+    <div>
+      <h3>Festigkeitsstrahlanlagen</h3>
+      <p>Diese Methode erzeugt eine besondere Oberflächenspannung, welche die Bauteile sehr widerstandsfähig macht und die Produktlebensdauer erhöht. Wir führen das Festigkeitsstrahlen im Druckluft- oder Schleuderradstrahlverfahren für die Festigkeitsklassen 2, 3 und 4 durch.</p>
+    </div>
+    <img class="photo feature-img fimg" src="{{strahl}}" alt="Gestrahlte Bauteile">
+  </div>
+  <footer class="page-foot"><span>HQM Härtetechnik GmbH</span><span>11</span></footer>
+</section>
+
+<!-- ============ 12 ZERTIFIKATE ============ -->
+<section class="page" id="zertifikate">
+  <div class="kicker">HQM Härtetechnik</div>
+  <h2>Zertifikate</h2>
+  <div class="certs">
+    <figure class="cert" style="margin:0">
+      <img class="scan" src="{{iatf_leipzig}}" alt="Zertifikat IATF 16949:2016, Standort Leipzig">
+      <figcaption class="meta">
+        <div class="norm">IATF 16949:2016</div>
+        <dl><dt>Standort</dt><dd>Leipzig</dd><dt>Zertifizierer</dt><dd>DNV</dd><dt>Gültig bis</dt><dd>19.05.2027</dd></dl>
+      </figcaption>
+    </figure>
+    <figure class="cert" style="margin:0">
+      <img class="scan" src="{{iatf_wuppertal}}" alt="Zertifikat IATF 16949:2016, Standort Wuppertal">
+      <figcaption class="meta">
+        <div class="norm">IATF 16949:2016</div>
+        <dl><dt>Standort</dt><dd>Wuppertal</dd><dt>Zertifizierer</dt><dd>DNV</dd><dt>Gültig bis</dt><dd>28.05.2027</dd></dl>
+      </figcaption>
+    </figure>
+    <figure class="cert" style="margin:0">
+      <img class="scan" src="{{iso50001}}" alt="Zertifikat DIN EN ISO 50001:2018">
+      <figcaption class="meta">
+        <div class="norm">DIN EN ISO 50001:2018</div>
+        <dl><dt>Standorte</dt><dd>Leipzig, Wuppertal</dd><dt>Zertifizierer</dt><dd>GUTcert</dd><dt>Gültig bis</dt><dd>21.06.2027</dd></dl>
+      </figcaption>
+    </figure>
+  </div>
+  <footer class="page-foot"><span>HQM Härtetechnik GmbH</span><span>12</span></footer>
+</section>
+
+<!-- ============ 13 ABSCHLUSS UND KONTAKT ============ -->
+<section class="page" id="kontakt">
+  <div class="end-head">
+    <a href="https://www.hqm-haertetechnik.de/" target="_blank" rel="noopener" style="border:0;text-decoration:none"><img src="{{logo}}" alt="HQM Härtetechnik Logo"></a>
+    <a href="https://www.hqm-haertetechnik.de/" target="_blank" rel="noopener" style="font-size:14px;font-weight:600">www.hqm-haertetechnik.de</a>
+  </div>
+  <div class="sites">
+    <div class="site">
+      <h3>Standort Leipzig</h3>
+      <p>HQM Härtetechnik GmbH<br>Fraunhoferstraße 2–4<br>04178 Leipzig<br>Deutschland</p>
+      <p style="margin-top:10px"><span class="lbl">T</span> <a href="tel:+493414472683">+49 341 4472-683</a><br><span class="lbl">F</span> +49 341 4472-557<br><a href="mailto:haertetechnik.leipzig@hqm-gruppe.de">haertetechnik.leipzig@<wbr><span style="white-space:nowrap">hqm-gruppe.de</span></a></p>
+    </div>
+    <div class="site">
+      <h3>Standort Wuppertal</h3>
+      <p>HQM Härtetechnik GmbH<br>Otto-Hahn-Straße 55<br>42369 Wuppertal<br>Deutschland</p>
+      <p style="margin-top:10px"><span class="lbl">T</span> <a href="tel:+49202246430">+49 202 24643-0</a><br><span class="lbl">F</span> +49 202 24643-25<br><a href="mailto:haertetechnik.wuppertal@hqm-gruppe.de">haertetechnik.wuppertal@<wbr><span style="white-space:nowrap">hqm-gruppe.de</span></a></p>
+    </div>
+    <div class="qr">
+      <img src="{{qr}}" alt="QR-Code zur Website der HQM Härtetechnik">
+      <a href="https://www.hqm-haertetechnik.de/" target="_blank" rel="noopener">www.hqm-haertetechnik.de</a>
+    </div>
+  </div>
+  <img class="photo" style="height:340px" src="{{abschluss}}" alt="Produktionshalle der HQM Härtetechnik">
+</section>
+
+</main>
+</body>
+</html>
