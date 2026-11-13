@@ -1,6 +1,6 @@
 # Projekt Infomappe HQM Härtetechnik
 
-**Stand:** 15.10.2026 · **Verantwortlich:** Carsten Klinke · **Status:** Versandfassung erstellt, Übernahme in `main` offen
+**Stand:** 13.11.2026 · **Verantwortlich:** Carsten Klinke · **Status:** Versandfassung erstellt, Übernahme in `main` offen
 
 ## 1. Ziel
 
@@ -17,6 +17,7 @@ Die alte Infomappe (`Ausgangsmaterial/HQM Infobroschüre.pdf`, 14 Seiten, Canva 
 | Datei | Inhalt |
 |---|---|
 | `Infomappe_HTML/HQM_Haertetechnik_Infomappe.html` | Versandfassung, 2,7 MB, alle Bilder und die Schrift eingebettet, keine Internetverbindung nötig |
+| `Infomappe_HTML/HQM_Haertetechnik_Infomappe.pdf` | PDF-Fassung zum Download und Versand (13.11.2026): A4, 13 Seiten, 2,1 MB, Schrift eingebettet, Links aktiv, Lesezeichen |
 | `Infomappe_HTML/HQM_Haertetechnik_Infomappe_Druckkontrolle_A4.pdf` | Kontrollausdruck A4, 13 Seiten |
 | `Infomappe_HTML/Aenderungen_Entwurf_v1.md` | Änderungstabelle gegenüber der alten Mappe (Stand Entwurf v1, siehe offene Punkte) |
 | `Infomappe_HTML/quelle/` | Quelle zum Neubauen: `vorlage.html`, `build.py`, `assets/`, `font/`, `original/` |
@@ -88,3 +89,4 @@ Die Schrift Open Sans stammt aus dem npm-Paket `@fontsource/open-sans` 5.0.28 (S
 | v11 | Zertifikat DIN EN ISO 50001 eingesetzt |
 | v12 | QR-Code auf hqm-haertetechnik.de, Standortkasten in Onyx |
 | v13 | Links geprüft und verbessert, Versandfassung |
+| PDF | 13.11.2026: PDF-Fassung aus der Versandfassung erzeugt |
