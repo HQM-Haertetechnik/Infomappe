@@ -6,7 +6,7 @@
 <title>HQM Härtetechnik · Unternehmensvorstellung</title>
 <!--
   HQM Härtetechnik · Infomappe als Single-Source-HTML
-  Versandfassung (Entwurf v13), Stand: 15.10.2026
+  Versandfassung (Entwurf v14), Stand: 13.11.2026
   Gestaltung nach Styleguide HQM Härtetechnik v1.0 (18.09.2025):
   Onyx #122436 · Anthrazit #475F6A · Off-White #CFCFCF · Ember #A4302F · Open Sans
   Alle Bilder, Icons und Schriften sind eingebettet. Die Datei benötigt keine Internetverbindung.
@@ -162,7 +162,7 @@ table.plant{width:100%;border-collapse:collapse;font-size:13px;line-height:1.4}
 .qr img{width:112px;margin:0 auto 8px;background:#fff;padding:6px}
 
 /* Tablet und Handy */
-@media (max-width:760px){
+@media screen and (max-width:760px){
   .doc{padding:0}
   .page{margin:0 0 10px;padding:36px 20px 28px;box-shadow:none}
   h2{font-size:24px;margin-bottom:20px}
@@ -244,6 +244,10 @@ table.plant{width:100%;border-collapse:collapse;font-size:13px;line-height:1.4}
   .lab li{padding:9pt 0}
   .certs{gap:12pt}
   a{text-decoration:none}
+  /* Jede Druckseite genau eine A4-Seite hoch, Fußzeile immer am unteren Rand */
+  .page{height:272mm;display:flex;flex-direction:column;overflow:hidden}
+  .page>*{flex-shrink:0}
+  .page-foot{margin-top:auto!important}
 }
 </style>
 </head>

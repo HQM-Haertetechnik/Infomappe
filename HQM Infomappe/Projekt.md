@@ -90,3 +90,4 @@ Die Schrift Open Sans stammt aus dem npm-Paket `@fontsource/open-sans` 5.0.28 (S
 | v12 | QR-Code auf hqm-haertetechnik.de, Standortkasten in Onyx |
 | v13 | Links geprüft und verbessert, Versandfassung |
 | PDF | 13.11.2026: PDF-Fassung aus der Versandfassung erzeugt |
+| v14 | 13.11.2026: Druckseiten mit fester A4-Höhe, Fußzeile auf allen Seiten am unteren Rand; Handy-Layout greift nur noch am Bildschirm, nicht im Druck |
